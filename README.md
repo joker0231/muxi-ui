@@ -38,4 +38,5 @@ import {Button} from 'muxi-ui'     // 测试打包后组件
 
 ## 开发文档
 借助金山文档在线文档组，利用**画图能力**和**协作能力**实现组件原型设计文档。
+
 组件开发规范：https://kdocs.cn/l/chHqqGN0rQSR

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d7291b7-7fdf-4366-87d2-3c1adc66fc1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Button/按钮组件.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/按钮组件.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
       <workItem from="1666341531133" duration="1670000" />
       <workItem from="1666343441783" duration="598000" />
       <workItem from="1666347653277" duration="984000" />
-      <workItem from="1666502208274" duration="973000" />
+      <workItem from="1666502208274" duration="1650000" />
     </task>
     <servers />
   </component>
