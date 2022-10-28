@@ -96,6 +96,7 @@
     "types": "dist/index.d.ts",
     "dependencies": {
         "eslint-plugin-jsx-a11y": "^6.6.1",
+        "eslint-plugin-prettier": "^4.2.1",
         "postcss": "^8.4.18",
         "tslib": "^2.4.0"
     },
