@@ -17,7 +17,12 @@ interface IBaseInputProps {        // 基础Input的props
   [name: string]: any // 其余头传给input元素的参数
 }
 
+type IFieldInputProps = IBaseInputProps & {
+  filedName: string //字段名称
+}
+
 
 export {
-  IBaseInputProps
+  IBaseInputProps,
+  IFieldInputProps
 }

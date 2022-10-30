@@ -1,16 +1,17 @@
 import React from "react"
 import {PureComponent} from "react";
 import {IBaseInputProps} from "./interface";
+import classNames from "classnames";
 
-class Input extends PureComponent<IBaseInputProps>{
-  private inputRef = React.createRef<HTMLInputElement>()
+class Input<IProps> extends PureComponent<IBaseInputProps & IProps>{    // todo：感觉这个ts有问题，应该是覆盖
+  protected inputRef = React.createRef<HTMLInputElement>()
 
   public getInput(): HTMLInputElement {
     return this.inputRef.current as HTMLInputElement  // 去除null，本组件inputRef一定存在
   }
 
   // 处理onChange事件，转换到外部的onChange
-  private handleInputChange = () => {
+  protected handleInputChange = () => {
     if(this.props.onChange) {
       this.props.onChange(this.getInput().value, this.isChineseInputting)
     }
@@ -35,16 +36,16 @@ class Input extends PureComponent<IBaseInputProps>{
 
   // 处理中文预输入
   public isChineseInputting = false  // 提供外部查询是否正在中文预输入
-  private handleCompositionStart = () => {  // 中文预输入开始
+  protected handleCompositionStart = () => {  // 中文预输入开始
     this.isChineseInputting =  true
   }
-  private handleCompositionEnd = () => {  // 中文预输入结束
+  protected handleCompositionEnd = () => {  // 中文预输入结束
     this.isChineseInputting = false
     this.handleInputChange()
   }
 
   // 处理键盘按键
-  private handleKeyDown = (e: React.KeyboardEvent) => {
+  protected handleKeyDown = (e: React.KeyboardEvent) => {
     const {onEnter, onEsc, onKeyDown} = this.props
     if (onKeyDown) {
       onKeyDown(e)
@@ -71,34 +72,33 @@ class Input extends PureComponent<IBaseInputProps>{
     delete inputProps.autoSelect
     delete inputProps.onEnter
     delete inputProps.onEsc
-  //   const cs = React.classNames({
-  //     'wowui-input': 1,
-  //     'input-white': whiteTheme,
-  //     'input-has-error': errorText,
-  //     'input-has-icon': iconType,
-  //     'disabled': disabled,
-  //   }, className)
-  //   return (
-  //     <Tooltip title={errorToolTip} visible={!!errorToolTip}>
-  //       <div className={cs} style={style}>
-  //         {
-  //           !!iconType &&
-  //             <div className="input-icon-warp">
-  //                 <Icon iconType={iconType}/>
-  //             </div>
-  //         }
-  //         <input ref={this.refInput} type="text" {...inputProps}
-  //                onChange={this.handleInputChange} onKeyDown={this.handleKeyDown}
-  //                onCompositionStart={this.handleCompositionStart}
-  //                onCompositionEnd={this.handleCompositionEnd}/>
-  //         {
-  //           !!errorText &&
-  //             <div className="input-error-text">{errorText}</div>
-  //         }
-  //       </div>
-  //     </Tooltip>
-  //   )
-  // }
-    return <div>Input组件</div>
+    const cs = classNames({
+      'wowui-input': 1,
+      'input-has-error': errorText,
+      'input-has-icon': iconType,
+      'disabled': disabled,
+    }, className)
+    console.log(disabled, 'syp-disabled')
+    return (
+        <div className={cs} style={style}>
+          {
+            !!iconType &&
+              <div className="input-icon-warp">
+                {/*todo: Icon组件*/}
+                  {/*<Icon iconType={iconType}/>*/}
+              </div>
+          }
+          <input ref={this.inputRef} type="text" {...inputProps}
+                 onChange={this.handleInputChange} onKeyDown={this.handleKeyDown}
+                 onCompositionStart={this.handleCompositionStart}
+                 onCompositionEnd={this.handleCompositionEnd} disabled={disabled}/>
+          {
+            !!errorText &&
+              <div className="input-error-text">{errorText}</div>
+          }
+        </div>
+    )
   }
 }
+
+export default Input
