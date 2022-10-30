@@ -1,7 +1,7 @@
 {
     "src/**/*.{js,jsx,ts,tsx}": [
         "eslint --fix",
-        "jest"
+        "jest --passWithNoTests"
     ],
     "src/**/*.{css,less}": [
         "stylelint"
