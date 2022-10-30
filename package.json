@@ -12,7 +12,8 @@
         "build-storybook": "build-storybook",
         "lint": "lint-staged",
         "stylelint": "stylelint src/css/**/*.scss src/css/**/*.css",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "tscheck": "tsc -p ."
     },
     "author": "joker",
     "license": "ISC",
