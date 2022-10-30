@@ -5,8 +5,6 @@ export interface ButtonProps {
     label: string
 }
 
-const Button = (props: ButtonProps) => {
-    return <button>{props.label}</button>
-}
+const Button: React.FC<ButtonProps> = (props: ButtonProps) => <button>{props.label}lll</button>
 
 export default Button

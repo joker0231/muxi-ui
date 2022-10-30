@@ -15,6 +15,7 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
+        project: './tsconfig.json',
         ecmaFeatures: {
             jsx: true
         }
@@ -32,5 +33,10 @@ module.exports = {
                 depth: 3
             }
         ]
+    },
+    settings: {
+        "react":{
+            "version": "detact"
+        }
     }
 }
