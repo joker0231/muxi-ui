@@ -14,18 +14,6 @@
         "stylelint": "stylelint src/css/**/*.scss src/css/**/*.css",
         "prepare": "husky install"
     },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -e $GIT_PARAMS",
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "*.{js,jsx}": [
-            "eslint --fix",
-            "git add"
-        ]
-    },
     "author": "joker",
     "license": "ISC",
     "devDependencies": {
