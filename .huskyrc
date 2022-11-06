@@ -1,6 +1,6 @@
 {
         "hooks": {
-            "commit-msg": "npm run commitlint",
+            "commit-msg": "commitlint -e $GIT_PARAMS",
             "pre-commit": "lint-staged"
         }
 }
