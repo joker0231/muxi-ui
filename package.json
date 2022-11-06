@@ -13,7 +13,8 @@
         "lint": "lint-staged",
         "stylelint": "stylelint src/css/**/*.scss src/css/**/*.css",
         "prepare": "husky install",
-        "tscheck": "tsc -p ."
+        "tscheck": "tsc -p .",
+        "commitlint": "commitlint --config commitlint.config.js -e -V"
     },
     "author": "joker",
     "license": "ISC",
