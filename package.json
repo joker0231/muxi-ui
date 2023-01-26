@@ -7,8 +7,8 @@
     "description": "The exclusive ui library of the muxi team",
     "scripts": {
         "test": "jest",
-        "rollup": "rollup -c",
-        "storybook": "start-storybook -p 6006",
+        "build": "rollup -c",
+        "start": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "lint": "lint-staged",
         "stylelint": "stylelint src/css/**/*.scss src/css/**/*.css",

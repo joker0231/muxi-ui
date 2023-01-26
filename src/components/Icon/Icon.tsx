@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/images/867695.png'
+import logo from '../../assets/images/6771060.jpg'
 
 const Icon: React.FC<any> = () => {
     return (
