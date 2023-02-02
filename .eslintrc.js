@@ -5,10 +5,9 @@ module.exports = {
         es2021: true
     },
     extends: [
+        'eslint:recommended',
         'plugin:react/recommended',
         'standard-with-typescript',
-        'eslint:recommended',
-        'airbnb-base',
         'prettier' // 打开prettier防冲突扩展
     ],
     overrides: [],
@@ -32,11 +31,14 @@ module.exports = {
                 controlComponents: ['CustomInput'],
                 depth: 3
             }
-        ]
+        ],
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        '@typescript-eslint/consistent-type-assertions': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off',
     },
     settings: {
-        "react":{
-            "version": "detact"
+        react: {
+            version: 'detact'
         }
     }
 }

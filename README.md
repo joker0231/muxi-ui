@@ -30,18 +30,30 @@
 
 ```shell
 yarn install      // 安装依赖
-yarn storybook    // 启动本地服务 根据文档需求开发组件
+yarn start    // 启动storybook 开启本地服务，根据文档需求开发组件
+```
+
+组件构建
+```shell
+yarn build
 ```
 
 组件测试
 
 ```shell
-yarn rollup       // 打包构建组件库
+yarn build       // 利用roll 打包构建组件库
 yarn link         // 本机电脑全局安装
 
 cd muxi_workbench_fe  //切换到需要使用muxi-ui仓库
-yarn link muxi-ui     // 连接本地仓库
-import {Button} from 'muxi-ui'     // 测试打包后组件
+yarn link @joker0231/muxi-ui     // 连接本地仓库
+import {Button} from '@joker0231/muxi-ui'     // 测试打包后组件
+```
+
+组件发布
+
+```shell
+yarn build
+npm publish
 ```
 
 ## 开发重点
