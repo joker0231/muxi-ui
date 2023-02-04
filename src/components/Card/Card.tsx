@@ -6,7 +6,7 @@ const Card: React.FC<CardProps> = (props) => {
     const [x, setX] = useState(0)
     const [y, setY] = useState(0)
     const [visible, setVisible] = useState(false)
-    const {selectionList,clickItem} = props
+    const {selectionList} = props
     useEffect(() => {
         console.log("RightClick")
         function rightClick(event: MouseEvent) {

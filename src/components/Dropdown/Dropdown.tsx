@@ -3,11 +3,11 @@ import './index.less'
 import { type DropdownProps} from './interface'
 
 const Dropdown: React.FC<DropdownProps> = (props) => {
-    const {selectionList,clickItem} = props
+    const {selectionList} = props
     return (
         <>
             <div className="drop-box">
-                <p className="txt">{selectionList[1].name}</p>
+                <p className="txt">{selectionList[0].name}</p>
                 <ul className="menu">
                     {selectionList.map((item) => {
                         return (
