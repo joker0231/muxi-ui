@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.drop-box {
+  box-sizing: border-box;
+  width: 100px;
+  font-size: 5px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.175);
+  overflow: hidden;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
+.drop-box p {
+  height: 22px;
+  padding-top: 4px;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.drop-box p::after {     /* 三角箭头 */
+  position: absolute;
+  top: 12px;
+  right: 4px;
+  width: 0;
+  height: 0;
+  content: '';
+  border: 6px solid transparent;
+  border-top-color: #e4e4e3;
+}
+
+.drop-box .menu {
+  border-radius: 5%;
+  border: #e4e4e3 solid 1px;
+  display: none;
+  width: 95px;
+  position: absolute;
+  background-color: #fff;
+  margin-top: 3px;
+  z-index: 2;
+}
+
+.drop-box .menu li {
+  height: 28px;
+  width: 100%;
+  line-height: 28px;
+}
+
+.drop-box .menu li:hover {
+  background-color: rgba(189, 213, 246, 0.97);
+  color: #3266ac;
+}
+
+.drop-box:hover {
+  cursor: pointer;
+}
+
+.drop-box:hover .menu {
+  display: block;
+}
+
+.drop-box:hover p::after {
+  top: 5px;
+  border: 6px solid transparent;
+  border-bottom-color: #e4e4e3;
+}
+
+.onloadfile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  opacity: 0;
+}

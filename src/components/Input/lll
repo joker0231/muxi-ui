@@ -1,0 +1,165 @@
+/**
+ * 多行文本框
+ */
+
+import './index.less'
+import React, {PureComponent} from 'react'
+import keyHelper from '../../../../../public/helpers/keyboardKey'
+import Tooltip from '~/applications/public/components/general/Tooltip'
+import {isTouchScreen} from '../../../../../public/helpers/userAgent'
+
+interface IProps {
+    className?: string,
+        // 是否使用白色主题，底色白色、无边框
+        whiteTheme?: boolean,
+        // 错误时的提示文案
+        errorText?: string,
+        // 是否自动聚焦
+        autoFocus?: boolean,
+        // 支持给输入框的容器自定义宽度或者高度
+        style?: object,
+        // 文本框最大高度
+        maxHeight?: number,
+        // 输入框的值变化时
+        onChange?: (value: string) => void,
+
+        // 按下ESC的回调
+        onEsc?: () => void,
+        // 按下Enter的回调
+        onEnter?: React.KeyboardEventHandler,
+        // 按下按键的回调
+        onKeyDown?: React.KeyboardEventHandler,
+
+        // 除了上述的参数，其他参数都会直接透传给input
+        [name: string]: any,
+}
+
+export default class TextArea extends PureComponent<IProps> {
+
+    public static defaultProps = {
+        maxHeight: 18 * 3 + 6 * 2 + 2, // 默认最大高度，三行加上padding和border
+    }
+
+    // 提供给外部查询：是否正在中文预输入
+    public isChineseInputting = false
+
+    // 提供给外部获取文本框
+    public getInput(): HTMLTextAreaElement {
+        return this.refInput.current
+    }
+
+    // 方便外部获取value
+    public getValue(): string {
+        return this.getInput().value
+    }
+
+    /**
+     * 设置焦点
+     * @param isSelectAll 是否全选
+     * @param isEnd 是否把光标定到最后
+     */
+    public focus(isSelectAll = false, isEnd = false): void {
+        const input = this.getInput()
+        const {value} = input
+        // 部分机器上空文本框竟然是可以全选的
+        if (isSelectAll && value.length > 0) {
+            input.select()
+        } else if (isEnd) {
+            // 先把值改掉，再改回去才能把光标放在最后
+            input.value = value + ' '
+            input.value = value
+        }
+        input.focus()
+    }
+
+    public componentDidMount(): void {
+        this._autoHeight()
+        // 平板不需要自动聚焦
+        if (this.props.autoFocus && !isTouchScreen) {
+            this.getInput().focus()
+        }
+    }
+
+    public componentDidUpdate(prevProps: IProps) {
+        if (prevProps.value !== this.props.value) {
+            this._autoHeight()
+        }
+    }
+
+    public componentWillUnmount(): void {
+        this.getInput().blur() // 卸载时要主动失焦，避免pad上键盘不会自动收起
+    }
+
+    private _autoHeight(): void {
+        const textarea = this.refInput.current
+        textarea.style.height = ''
+        const realH = textarea.scrollHeight + 2 // 要加上边框
+        const height = Math.min(realH, this.props.maxHeight)
+        textarea.style.height = `${height}px`
+    }
+
+    private handleInputChange = () => {
+        if (this.props.onChange) {
+            this._autoHeight()
+            this.props.onChange(this.getInput().value)
+        }
+    }
+
+    // 中文预输入开始
+    private handleCompositionStart = () => {
+        this.isChineseInputting = true
+    }
+
+    // 中文预输入结束
+    private handleCompositionEnd = () => {
+        this.isChineseInputting = false
+    }
+
+    private handleKeyDown = (e: React.KeyboardEvent) => {
+        const {onEsc, onKeyDown, onEnter} = this.props
+        if (onKeyDown) {
+            onKeyDown(e)
+        }
+        const key = keyHelper.getKey(e)
+        if (onEnter && key === keyHelper.Keys.Enter) {
+            onEnter(e)
+        }
+        if (onEsc && key === keyHelper.Keys.Esc) {
+            onEsc()
+        }
+    }
+
+    private refInput = React.createRef<HTMLTextAreaElement>()
+
+    public render() {
+        const {
+            className, whiteTheme,
+            errorText, style, ...inputProps
+        } = this.props
+        if (inputProps.hasOwnProperty('value') &&
+            (inputProps.value === null || inputProps.value === undefined)) {
+            // @ts-ignore
+            inputProps.value = ''
+        }
+        // 不加多余的属性进去
+        delete inputProps.autoFocus
+        delete inputProps.onEsc
+        delete inputProps.maxHeight
+        delete inputProps.onEnter
+        delete inputProps.onKeyDown
+
+        const cs = React.classNames({
+            'wowui-textarea': 1,
+            'textarea-white': whiteTheme,
+            'textarea-has-error': errorText,
+        }, className)
+        return (
+            <Tooltip title={errorText} visible={!!errorText}>
+                <textarea ref={this.refInput} className={cs} style={style} {...inputProps}
+                          onChange={this.handleInputChange} onKeyDown={this.handleKeyDown}
+                          onCompositionStart={this.handleCompositionStart}
+                          onCompositionEnd={this.handleCompositionEnd}/>
+            </Tooltip>
+        )
+    }
+}
