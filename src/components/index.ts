@@ -1,3 +1,5 @@
-export { default as Button } from './Button'
-export { Input, PInput } from './Input'
-export { default as Icon } from './Icon'
+export { BaseButton } from './Button'
+export { BaseInput, MobileInput, PcInput } from './Input'
+export { BaseIcon } from './Icon'
+export { BaseDropdown } from './Dropdown'
+export { BaseCard } from './Card'
