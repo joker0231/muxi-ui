@@ -1,5 +1,4 @@
 import React from 'react'
-import './index.less'
 import { type CardProps } from '../interface'
 import useRightClick from '../../../helpers/hooks/useRightClick'
 
