@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 
 import classNames from 'classnames'
-import { type IBaseInputProps } from './interface'
+import { type IBaseInputProps } from '../interface'
 
-class Input<IProps> extends PureComponent<IBaseInputProps & IProps> {
+class Index<IProps> extends PureComponent<IBaseInputProps & IProps> {
     // todo：感觉这个ts有问题，应该是覆盖
     protected inputRef = React.createRef<HTMLInputElement>()
 
@@ -96,7 +96,7 @@ class Input<IProps> extends PureComponent<IBaseInputProps & IProps> {
                 {!(iconType == null) && (
                     <div className="input-icon-warp">
                         {/* todo: Icon组件 */}
-                        {/* <Icon iconType={iconType}/> */}
+                        {/* <Index iconType={iconType}/> */}
                     </div>
                 )}
                 <input
@@ -115,4 +115,4 @@ class Input<IProps> extends PureComponent<IBaseInputProps & IProps> {
     }
 }
 
-export default Input
+export default Index

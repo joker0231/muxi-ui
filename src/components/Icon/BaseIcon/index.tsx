@@ -1,7 +1,7 @@
 import React from 'react'
-import logo from '../../assets/images/6771060.jpg'
+import logo from '../../../assets/images/6771060.jpg'
 
-const Icon: React.FC<any> = () => {
+const BaseIcon: React.FC<any> = () => {
     return (
         <div>
             <img src={logo} alt={'123'} />
@@ -9,4 +9,4 @@ const Icon: React.FC<any> = () => {
     )
 }
 
-export default Icon
+export default BaseIcon

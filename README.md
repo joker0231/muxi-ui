@@ -7,8 +7,8 @@
 ├─assets       // 少部分静态资源，需要rollup构建支持
 │  └─images
 ├─components
-│  ├─Button
-│  └─Input
+│  ├─Index
+│  └─Index
 │      ├─Mobile
 │      └─Pc
 └─helpers   // 公共辅助函数，处理键盘事件，触摸事件等
@@ -46,7 +46,7 @@ yarn link         // 本机电脑全局安装
 
 cd muxi_workbench_fe  //切换到需要使用muxi-ui仓库
 yarn link @joker0231/muxi-ui     // 连接本地仓库
-import {Button} from '@joker0231/muxi-ui'     // 测试打包后组件
+import {Index} from '@joker0231/muxi-ui'     // 测试打包后组件
 ```
 
 组件发布

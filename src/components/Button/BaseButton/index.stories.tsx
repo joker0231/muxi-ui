@@ -1,15 +1,15 @@
 import React from 'react'
 import { type ComponentStory, type ComponentMeta } from '@storybook/react'
-import Button from './Button'
+import Index from './index'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-    title: 'Muxi-ui/Button',
-    component: Button
-} as ComponentMeta<typeof Button>
+    title: 'Muxi-ui/Button/BaseButton',
+    component: Index
+} as ComponentMeta<typeof Index>
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
+const Template: ComponentStory<typeof Index> = (args) => <Index {...args} />
 
 export const HelloWorld = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

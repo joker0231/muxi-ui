@@ -3,10 +3,10 @@
  */
 import classNames from 'classnames'
 import React from 'react'
-import Input from '../../Input'
-import { type IFieldInputProps } from '../../interface'
+import BaseInput from '../BaseInput'
+import { type IFieldInputProps } from '../interface'
 
-class FieldInput extends Input<IFieldInputProps> {
+class MobileInput extends BaseInput<IFieldInputProps> {
     // 这里所有其他方法完全一直，只是添加了this.props.filedName，只用重写super.render方法即可
     public render(): JSX.Element {
         console.log(this.props.filedName)
@@ -17,8 +17,7 @@ class FieldInput extends Input<IFieldInputProps> {
             Object.prototype.hasOwnProperty.call(inputProps, 'value') &&
             (inputProps.value === null || inputProps.value === undefined)
         ) {
-            // 如果inputProps没有value字段，加一个空的
-            // @ts-expect-error: 测试
+            // @ts-expect-error: 如果inputProps没有value字段，加一个空的
             inputProps.value = ''
         }
         // 删除多余事件（不直接透传到input上）
@@ -41,7 +40,7 @@ class FieldInput extends Input<IFieldInputProps> {
                 {!(iconType == null) && (
                     <div className="input-icon-warp">
                         {/* todo: Icon组件 */}
-                        {/* <Icon iconType={iconType}/> */}
+                        {/* <Index iconType={iconType}/> */}
                     </div>
                 )}
                 <div>{filedName}：</div>
@@ -61,4 +60,4 @@ class FieldInput extends Input<IFieldInputProps> {
     }
 }
 
-export default FieldInput
+export default MobileInput
