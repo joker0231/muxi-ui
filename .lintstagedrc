@@ -5,6 +5,6 @@
         "jest --passWithNoTests"
     ],
     "src/**/*.{css,less}": [
-        "stylelint"
+        "stylelint --fix"
     ]
 }

@@ -1,9 +1,30 @@
 import React from 'react'
+import { type BaseButtonProps } from '../interface'
+import classNames from 'classnames'
 
-export interface ButtonProps {
-    label: string
+const BaseButton: React.FC<BaseButtonProps> = (props: BaseButtonProps) => {
+    const { style, onClick, disabled, className, type, triggered, label } = props
+    const htmlType = props.htmlType
+    const classes = classNames(
+        'button',
+        type,
+        className,
+        { 'btn-disable': disabled },
+        { 'btn-triggered': triggered }
+    )
+    return (
+        <>
+            <button
+                type={htmlType}
+                className={classes}
+                style={style}
+                onClick={onClick}
+                disabled={disabled}
+            >
+                {label}
+            </button>
+        </>
+    )
 }
-
-const BaseButton: React.FC<ButtonProps> = (props: ButtonProps) => <button>{props.label}llll</button>
 
 export default BaseButton

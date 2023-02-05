@@ -15,7 +15,7 @@ export const ClickContent = () => {
 const Index: React.FC<CardProps> = (props) => {
     const { selectionList } = props
     const { x, y, visible } = useRightClick()
-    // todo 这个卡片已经成型了，基本原则就是，提供外界宽高和内容传入，有规范的padding等规范，然有右键弹窗功能，弹窗内容需要外界传入，可以有以下场景，然后基于Base组件拆出来其他Card就行
+    // TODO 这个卡片已经成型了，基本原则就是，提供外界宽高和内容传入，有规范的padding等规范，然有右键弹窗功能，弹窗内容需要外界传入，可以有以下场景，然后基于Base组件拆出来其他Card就行
     // 1. 进度的别人发的进度，进度卡片，右键收藏点赞转发等操作
     // 2. 项目文件的卡片，右键移动，重命名，删除等操作
 
