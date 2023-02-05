@@ -1,6 +1,7 @@
 import React from 'react'
 import { type BaseButtonProps } from '../interface'
 import classNames from 'classnames'
+import './index.less'
 
 const BaseButton: React.FC<BaseButtonProps> = (props: BaseButtonProps) => {
     const { style, onClick, disabled, className, type, triggered, label } = props

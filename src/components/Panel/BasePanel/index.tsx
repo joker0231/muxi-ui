@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './index.less'
 import { type BasePanelProps, type footerProps } from '../interface'
 import Button from '../../Button/BaseButton/index'
-import { buttonType } from '../../Button/interface'
+import { ButtonType } from '../../Button/interface'
 import classNames from 'classnames'
 
 const DefaultFooter: React.FC<footerProps> = ({ okText, cancelText, onOk, onCancel }) => (
     <div className="modal-footer">
-        <Button className="footer-ensure" onClick={onOk} label={okText} type={buttonType.basic} />
-        <Button type={buttonType.basic} onClick={onCancel} label={cancelText} />
+        <Button className="footer-ensure" onClick={onOk} label={okText} type={ButtonType.basic} />
+        <Button type={ButtonType.basic} onClick={onCancel} label={cancelText} />
     </div>
 )
 
@@ -43,24 +43,26 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
             />
         )
     }
-    let content
-    if (visible) {
-        content = (
-            <div className="modal">
-                <div className="modal-backdrop" />
-                <div className={classes}>
-                    <div className="modal-title">{title}</div>
-                    {closeBtn}
-                    <hr />
-                    <div className="modal-content">{children}</div>
-                    <hr />
-                    {footer}
+    const content = useMemo(() => {
+        if (visible) {
+            return (
+                <div className="modal">
+                    <div className="modal-backdrop" />
+                    <div className={classes}>
+                        <div className="modal-title">{title}</div>
+                        {closeBtn}
+                        <hr />
+                        <div className="modal-content">{children}</div>
+                        <hr />
+                        {footer}
+                    </div>
                 </div>
-            </div>
-        )
-    } else {
-        content = null
-    }
+            )
+        } else {
+            return null
+        }
+    }, [classes, title, closeBtn, children, footer])
+
     return <>{content}</>
 }
 

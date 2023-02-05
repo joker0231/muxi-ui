@@ -1,4 +1,4 @@
-export enum buttonType {
+export enum ButtonType {
     primary = 'btn-primary', // 常见蓝底白字按钮 因为用的较多 定为default样式
     basic = 'btn-basic', // modal用的 灰底按钮 黑border按钮
     trigger = 'btn-trigger',
@@ -6,15 +6,15 @@ export enum buttonType {
     anim = 'btn-anim' // 有动态按下效果
 }
 
-export enum htmlBtnType {
+export enum HtmlBtnType {
     button = 'button',
     submit = 'submit',
     reset = 'reset'
 }
 
 interface BaseButtonProps {
-    type: buttonType
-    htmlType?: htmlBtnType
+    type: ButtonType
+    htmlType?: HtmlBtnType
     style?: React.CSSProperties
     onClick?: () => void
     disabled?: boolean
