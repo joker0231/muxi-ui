@@ -16,4 +16,4 @@ const BaseMessage: React.FC<BaseMessageProps> = (props) => {
     )
 }
 
-export default BaseMessage
+export default React.memo(BaseMessage)

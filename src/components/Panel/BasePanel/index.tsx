@@ -66,4 +66,4 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
     return <>{content}</>
 }
 
-export default BasePanel
+export default React.memo(BasePanel)
