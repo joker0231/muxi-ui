@@ -1,11 +1,14 @@
 import React from 'react'
-import logo from '../../../assets/images/6771060.jpg'
+import { ReactSVG } from 'react-svg'
+import './index.less'
+import { type BaseIconProps } from '../interface'
 
-const BaseIcon: React.FC<any> = () => {
+const BaseIcon: React.FC<BaseIconProps> = (props) => {
+    const { src, width, height, classname } = props
     return (
-        <div>
-            <img src={logo} alt={'123'} />
-        </div>
+        <>
+            <ReactSVG src={src} className={classname} width={width} height={height} />
+        </>
     )
 }
 

@@ -108,5 +108,5 @@
         "allowSyntheticDefaultImports": true,
         "emitDeclarationOnly": true
     },
-    "include": ["./.eslintrc.js", "./src", "."]
+    "include": ["./.eslintrc.js", "./src", ".","src/custom.d.ts"]
 }

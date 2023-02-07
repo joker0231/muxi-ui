@@ -11,24 +11,10 @@ const Template: ComponentStory<typeof StatusCard> = (args) => <StatusCard {...ar
 
 export const StatusUse = Template.bind({})
 StatusUse.args = {
-    selectionList: [
-        {
-            name: '关注',
-            click: () => {
-                console.log(1)
-            }
-        },
-        {
-            name: '点赞',
-            click: () => {
-                console.log(2)
-            }
-        },
-        {
-            name: '删除',
-            click: () => {
-                console.log(3)
-            }
-        }
-    ]
+    username: '用户1',
+    time: '2023年2月6日',
+    content: '这是状态展示',
+    commentcount: 2,
+    liked: true,
+    likecount: 2
 }

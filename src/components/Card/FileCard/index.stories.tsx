@@ -11,24 +11,9 @@ const Template: ComponentStory<typeof FileCard> = (args) => <FileCard {...args} 
 
 export const FileUse = Template.bind({})
 FileUse.args = {
-    selectionList: [
-        {
-            name: '移动',
-            click: () => {
-                console.log(1)
-            }
-        },
-        {
-            name: '关注',
-            click: () => {
-                console.log(2)
-            }
-        },
-        {
-            name: '删除',
-            click: () => {
-                console.log(3)
-            }
-        }
-    ]
+    name: '文件夹',
+    proid: 4,
+    fileid: 4,
+    folderid: 4,
+    type: true
 }
