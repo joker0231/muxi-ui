@@ -1,6 +1,7 @@
 import React from 'react'
 import { type ComponentStory, type ComponentMeta } from '@storybook/react'
 import StatusCard from './index'
+import DefaultAvatar from '../../../assets/images/avatar.png'
 
 export default {
     title: 'Muxi-ui/Card/StatusCard',
@@ -16,5 +17,6 @@ StatusUse.args = {
     content: '这是状态展示',
     commentcount: 2,
     liked: true,
-    likecount: 2
+    likecount: 2,
+    avatar: DefaultAvatar
 }

@@ -3,7 +3,7 @@ import { type ComponentStory, type ComponentMeta } from '@storybook/react'
 import RightClick from './index'
 
 export default {
-    title: 'Muxi-ui/RightClick/RightClick',
+    title: 'Muxi-ui/RightClick/BaseUse',
     component: RightClick
 } as ComponentMeta<typeof RightClick>
 

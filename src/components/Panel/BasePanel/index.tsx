@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import './index.less'
 import { type BasePanelProps, type footerProps } from '../interface'
 import Button from '../../Button/BaseButton/index'
@@ -13,7 +13,7 @@ const DefaultFooter: React.FC<footerProps> = ({ okText, cancelText, onOk, onCanc
 )
 
 const BasePanel: React.FC<BasePanelProps> = (props) => {
-    let {
+    const {
         className,
         closable,
         onClose,
@@ -33,35 +33,32 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
         </button>
     ) : null
 
-    if (footer === undefined) {
-        footer = (
-            <DefaultFooter
-                onOk={onOk}
-                onCancel={onCancel}
-                okText={okText}
-                cancelText={cancelText}
-            />
-        )
-    }
-    const content = useMemo(() => {
-        if (visible) {
-            return (
-                <div className="modal">
-                    <div className="modal-backdrop" />
-                    <div className={classes}>
-                        <div className="modal-title">{title}</div>
-                        {closeBtn}
-                        <hr />
-                        <div className="modal-content">{children}</div>
-                        <hr />
-                        {footer}
-                    </div>
-                </div>
+    const renderfooter = React.useCallback(()=>{
+        if (footer === undefined) {
+            return(
+                <DefaultFooter
+                    onOk={onOk}
+                    onCancel={onCancel}
+                    okText={okText}
+                    cancelText={cancelText}
+                />
             )
-        } else {
-            return null
         }
-    }, [classes, title, closeBtn, children, footer])
+        return footer
+    },[footer])
+
+
+    const content = visible ? (
+            <div className="modal">
+                <div className="modal-backdrop" />
+                <div className={classes}>
+                    <div className="modal-title">{title}</div>
+                    {closeBtn}
+                    <div className="modal-content">{children}</div>
+                    {renderfooter()}
+                </div>
+            </div>
+        ) : null
 
     return <>{content}</>
 }

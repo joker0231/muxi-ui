@@ -5,10 +5,10 @@ import { type IBaseInputProps } from '../interface'
 
 class Index<IProps> extends PureComponent<IBaseInputProps & IProps> {
     // todo：感觉这个ts有问题，应该是覆盖
-    protected inputRef = React.createRef<HTMLInputElement>()
+    protected inputRef = React.createRef<HTMLTextAreaElement>()
 
-    public getInput(): HTMLInputElement {
-        return this.inputRef.current as HTMLInputElement // 去除null，本组件inputRef一定存在
+    public getInput(): HTMLTextAreaElement {
+        return this.inputRef.current as HTMLTextAreaElement // 去除null，本组件inputRef一定存在
     }
 
     // 处理onChange事件，转换到外部的onChange
@@ -66,20 +66,6 @@ class Index<IProps> extends PureComponent<IBaseInputProps & IProps> {
         }
     }
 
-    protected debounceFunc = (fn: any, wait: number) => { //增加防抖函数
-        let timer:any = null;
-        const this_ = this
-        return function () {
-            let args = arguments;
-
-            timer && clearTimeout(timer);
-
-            timer = setTimeout(() => {
-                fn.apply(this_, args)
-            }, wait);
-        }
-    }
-
     public render() {
         const { className, iconType, disabled, errorText, style, ...inputProps } = this.props
         if (
@@ -113,7 +99,7 @@ class Index<IProps> extends PureComponent<IBaseInputProps & IProps> {
                         {/* <Index iconType={iconType}/> */}
                     </div>
                 )}
-                <input
+                <textarea
                     ref={this.inputRef}
                     type="text"
                     {...inputProps}

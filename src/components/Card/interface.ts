@@ -3,11 +3,6 @@ interface FileCardProps {
     name: string
 }
 
-export enum feedType {
-    like = 'like',
-    comment = 'comment'
-}
-
 interface StatusCardrops {
     id?: number
     avatar?: string

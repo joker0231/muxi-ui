@@ -5,11 +5,11 @@ import Thumbs from '../../../assets/svg/commonIcon/thumbs.svg'
 import ThumbsUp from '../../../assets/svg/commonIcon/thumbs_up.svg'
 import Comment from '../../../assets/svg/commonIcon/comment.svg'
 import { type StatusCardrops } from '../interface'
-import Avatar from '../../../assets/images/avatar.png'
+import DefaultAvatar from '../../../assets/images/avatar.png'
 import RightClick from '../../RightClick/BaseUse/index'
 
 const StatusCard: React.FC<StatusCardrops> = (props) => {
-    let {
+    const {
         id,
         avatar,
         username,
@@ -25,15 +25,14 @@ const StatusCard: React.FC<StatusCardrops> = (props) => {
         clickToDetail
     } = props
 
-    if (!avatar) {
-        avatar = Avatar
-    }
-
     return (
         <>
             <div className="status-item" key={id}>
                 <div className="information">
-                    <img className="avatar" src={avatar} />
+                    <img className="avatar" src={avatar} onError={(e) => {
+                        e.currentTarget.onerror = null
+                        e.currentTarget.src = DefaultAvatar
+                    }} />
                     <div className="details">
                         <div className="name">{username}</div>
                         <div className="date">{time}</div>

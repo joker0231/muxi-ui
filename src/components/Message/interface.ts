@@ -1,7 +1,7 @@
 export enum MessageType {
-    success = 'success',
-    warning = 'warning',
-    danger = 'danger'
+    Success = 'success',
+    Warning = 'warning',
+    Danger = 'danger'
 }
 
 interface BaseMessageProps {

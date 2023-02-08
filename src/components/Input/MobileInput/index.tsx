@@ -2,13 +2,23 @@
  * 带字段的输入框
  */
 import classNames from 'classnames'
-import React from 'react'
-import BaseInput from '../BaseInput'
+import React,{ Component } from 'react'
 import { type IFieldInputProps } from '../interface'
 
-class MobileInput extends BaseInput<IFieldInputProps> {
-    // 这里所有其他方法完全一直，只是添加了this.props.filedName，只用重写super.render方法即可
-    public render(): JSX.Element {
+class MobileInput extends Component<IFieldInputProps> {
+    state = {
+        textvalue: ''
+    }
+
+    protected inputRef = React.createRef<HTMLTextAreaElement>()
+
+    protected handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+        this.setState({
+            textvalue: e.target.value
+        })
+    }
+    
+    render(){
         console.log(this.props.filedName)
         // return super.render();
         const { className, iconType, disabled, errorText, style, filedName, ...inputProps } =
@@ -44,15 +54,13 @@ class MobileInput extends BaseInput<IFieldInputProps> {
                     </div>
                 )}
                 <div>{filedName}：</div>
-                <input
+                <textarea
                     ref={this.inputRef}
-                    type="text"
                     {...inputProps}
+                    rows={1}
                     onChange={this.handleInputChange}
-                    onKeyDown={this.handleKeyDown}
-                    onCompositionStart={this.handleCompositionStart}
-                    onCompositionEnd={this.handleCompositionEnd}
                     disabled={disabled}
+                    value={this.state.textvalue}
                 />
                 {!(errorText == null) && <div className="input-error-text">{errorText}</div>}
             </div>
