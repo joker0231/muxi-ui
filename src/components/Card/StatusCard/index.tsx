@@ -29,10 +29,14 @@ const StatusCard: React.FC<StatusCardrops> = (props) => {
         <>
             <div className="status-item" key={id}>
                 <div className="information">
-                    <img className="avatar" src={avatar} onError={(e) => {
-                        e.currentTarget.onerror = null
-                        e.currentTarget.src = DefaultAvatar
-                    }} />
+                    <img
+                        className="avatar"
+                        src={avatar}
+                        onError={(e) => {
+                            e.currentTarget.onerror = null
+                            e.currentTarget.src = DefaultAvatar
+                        }}
+                    />
                     <div className="details">
                         <div className="name">{username}</div>
                         <div className="date">{time}</div>

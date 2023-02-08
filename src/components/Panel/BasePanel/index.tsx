@@ -33,9 +33,9 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
         </button>
     ) : null
 
-    const renderfooter = React.useCallback(()=>{
+    const renderfooter = React.useCallback(() => {
         if (footer === undefined) {
-            return(
+            return (
                 <DefaultFooter
                     onOk={onOk}
                     onCancel={onCancel}
@@ -45,20 +45,19 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
             )
         }
         return footer
-    },[footer])
-
+    }, [footer])
 
     const content = visible ? (
-            <div className="modal">
-                <div className="modal-backdrop" />
-                <div className={classes}>
-                    <div className="modal-title">{title}</div>
-                    {closeBtn}
-                    <div className="modal-content">{children}</div>
-                    {renderfooter()}
-                </div>
+        <div className="modal">
+            <div className="modal-backdrop" />
+            <div className={classes}>
+                <div className="modal-title">{title}</div>
+                {closeBtn}
+                <div className="modal-content">{children}</div>
+                {renderfooter()}
             </div>
-        ) : null
+        </div>
+    ) : null
 
     return <>{content}</>
 }

@@ -12,5 +12,4 @@ const Template: ComponentStory<typeof ProfessionalSelector> = (args) => (
 )
 
 export const BaseUsage = Template.bind({})
-BaseUsage.args = {
-}
+BaseUsage.args = {}

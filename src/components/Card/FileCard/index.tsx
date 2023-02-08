@@ -30,9 +30,9 @@ declare type iconmaptype = keyof typeof IconMap
 const FileItem: React.FC<FileCardProps> = (props) => {
     const { type, name } = props
 
-    const icon = React.useMemo(()=>{
+    const icon = React.useMemo(() => {
         return name.substring(name.length - 3, name.length)
-    },[name])
+    }, [name])
 
     return (
         <>
