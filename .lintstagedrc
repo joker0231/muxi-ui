@@ -3,7 +3,7 @@
         "prettier --write",
         "eslint",
         "jest --passWithNoTests",
-        "tsc-files --noEmit --emitDeclarationOnly false"
+        "tsc-files --noEmit"
     ],
     "src/**/*.{css,less}": [
         "stylelint --fix"
