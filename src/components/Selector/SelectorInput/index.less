@@ -1,0 +1,40 @@
+.input-container{
+  display: flex;
+}
+
+.selector-input{
+  position: relative;
+  height: 22px;
+  padding-top: 7px;
+  border: 1px solid grey;
+  width: 100%;
+  border-radius: 7px;
+  margin-bottom: 5px;
+  font-size: 5px;
+  padding-left: 7px;
+}
+
+.modal-close {
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 230px;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-size: 1.3em;
+  text-indent: 10em;
+  cursor: pointer;
+  background-color: inherit;
+  border: 0;
+  z-index: 10;
+}
+
+.modal-close::after {
+  position: absolute;
+  top: 5px;
+  left: 0.1em;
+  line-height: 0.5;
+  text-indent: 0;
+  content: "\00D7";
+  z-index: 10;
+}

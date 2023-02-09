@@ -2,17 +2,13 @@
  * 带字段的输入框
  */
 import classNames from 'classnames'
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { type IFieldInputProps } from '../interface'
 import './index.less'
 
-class MobileInput extends Component<IFieldInputProps> {
+class MobileInput extends PureComponent<IFieldInputProps> {
     state = {
         textValue: ''
-    }
-
-    componentDidMount() {
-        console.log(123)
     }
 
     protected inputRef = React.createRef<HTMLTextAreaElement>()
@@ -80,7 +76,7 @@ class MobileInput extends Component<IFieldInputProps> {
                 )}
                 <div>{filedName}：</div>
                 <textarea
-                    className={'color'}
+                    className="textarea"
                     ref={this.inputRef}
                     {...inputProps}
                     rows={1}
