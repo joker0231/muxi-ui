@@ -11,7 +11,7 @@ interface SelectorInputProps {
 const SelectorInput = React.forwardRef<Ref<MutableRefObject<undefined>> | undefined,SelectorInputProps>((props,ref) => {
     const { value,closable,clear,show } = props
     const closeBtn = closable ? (
-        <button type="button" className="modal-close" onClick={clear}>
+        <button type="button" className="modal-close" onClick={(e)=>{e.stopPropagation();clear()}}>
             close
         </button>
     ) : null

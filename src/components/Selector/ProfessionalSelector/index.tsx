@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React,{useRef,useState,useEffect} from 'react'
 import './index.less'
 import SelectorPanel from '../SelectorPanel/index'
 import SelectorInput from '../SelectorInput/index'
@@ -8,37 +8,52 @@ const ProfessionalSelector: React.FC<ProfessionalSelectorProps> = (props) => {
     const { collegeList } = props
     const input = useRef()
     const panel = useRef()
+    const [closable,setClosable] = useState<boolean>(false)
+
+    useEffect(()=> {
+        document.addEventListener("click", (e) => {
+            if(panel.current){
+                const obj: HTMLDivElement = panel.current
+                obj.style.display = "none"
+            }
+        });
+    },[])
 
     const getInfo = (value:string) => {
         if(input.current){
-            // @ts-ignore
-            input.current.innerHTML = value
+            const obj: HTMLDivElement = input.current
+            obj.innerHTML = value
         }
+        setClosable(true)
     }
 
     const clear = () => {
         if(input.current){
-            // @ts-ignore
-            input.current.innerHTML = ''
+            const obj: HTMLDivElement = input.current
+            obj.innerHTML = ''
         }
         if(panel.current){
-            // @ts-ignore
-            panel.current.style.display = "none"
+            const obj: HTMLDivElement = panel.current
+            obj.style.display = "none"
         }
+        setClosable(false)
+    }
+
+    const stopPropagation = (e:any) => {
+        e.nativeEvent.stopImmediatePropagation();
     }
 
     const show = () => {
-        console.log(111)
-        // if(panel.current){
-        //     // @ts-ignore
-        //     panel.current.style.display = "flex"
-        // }
+        if(panel.current){
+            const obj: HTMLDivElement = panel.current
+            obj.style.display = "flex"
+        }
     }
 
     return (
         <>
-            <div className="professional-container">
-                <SelectorInput closable={true} ref={input} clear={clear} show={show}/>
+            <div className="professional-container" onClick={stopPropagation}>
+                <SelectorInput closable={closable} ref={input} clear={clear} show={show}/>
                 <SelectorPanel collegeList={collegeList} ref={panel} getInfo={getInfo}/>
             </div>
         </>
