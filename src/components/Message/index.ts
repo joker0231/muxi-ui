@@ -1,1 +1,1 @@
-export { default as BaseMessage } from './BaseMessage'
+export { default as BaseMessage, MessageType } from './BaseMessage'
