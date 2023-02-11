@@ -2,14 +2,46 @@
  * 带字段的输入框
  */
 import classNames from 'classnames'
-import React from 'react'
-import BaseInput from '../BaseInput'
+import React, { PureComponent } from 'react'
 import { type IFieldInputProps } from '../interface'
+import './index.less'
 
-class MobileInput extends BaseInput<IFieldInputProps> {
-    // 这里所有其他方法完全一直，只是添加了this.props.filedName，只用重写super.render方法即可
-    public render(): JSX.Element {
-        console.log(this.props.filedName)
+class MobileInput extends PureComponent<IFieldInputProps> {
+    state = {
+        textValue: ''
+    }
+
+    protected inputRef = React.createRef<HTMLTextAreaElement>()
+
+    protected handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement> = (e) => {
+        this.setState(
+            {
+                textValue: e.target.value
+            },
+            () => {
+                if (this.inputRef.current) {
+                    if (this.inputRef.current.scrollHeight > 70) {
+                        this.inputRef.current.scrollTop = this.inputRef.current.scrollHeight
+                        return
+                    }
+                    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                    this.inputRef.current.style.height = this.inputRef.current.scrollHeight + 'px'
+                }
+            }
+        )
+    }
+
+    componentDidUpdate() {
+        if (this.inputRef.current) {
+            if (this.inputRef.current.scrollHeight > 70) {
+                this.inputRef.current.style.height = '70px'
+                return
+            }
+            this.inputRef.current.style.height = 'auto'
+        }
+    }
+
+    render() {
         // return super.render();
         const { className, iconType, disabled, errorText, style, filedName, ...inputProps } =
             this.props
@@ -34,7 +66,6 @@ class MobileInput extends BaseInput<IFieldInputProps> {
             },
             className
         )
-        console.log(disabled, 'syp-disabled')
         return (
             <div className={cs} style={style}>
                 {!(iconType == null) && (
@@ -44,15 +75,14 @@ class MobileInput extends BaseInput<IFieldInputProps> {
                     </div>
                 )}
                 <div>{filedName}：</div>
-                <input
+                <textarea
+                    className="textarea"
                     ref={this.inputRef}
-                    type="text"
                     {...inputProps}
+                    rows={1}
                     onChange={this.handleInputChange}
-                    onKeyDown={this.handleKeyDown}
-                    onCompositionStart={this.handleCompositionStart}
-                    onCompositionEnd={this.handleCompositionEnd}
                     disabled={disabled}
+                    value={this.state.textValue}
                 />
                 {!(errorText == null) && <div className="input-error-text">{errorText}</div>}
             </div>

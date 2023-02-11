@@ -94,8 +94,6 @@
         "eslint-plugin-jsx-a11y": "^6.6.1",
         "eslint-plugin-prettier": "^4.2.1",
         "postcss": "^8.4.18",
-        "rc-notification": "^5.0.2",
-        "react-router-dom": "^6.8.1",
         "react-svg": "^16.1.0",
         "tslib": "^2.4.0"
     },

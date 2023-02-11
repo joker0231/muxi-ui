@@ -66,20 +66,6 @@ class Index<IProps> extends PureComponent<IBaseInputProps & IProps> {
         }
     }
 
-    protected debounceFunc = (fn: any, wait: number) => { //增加防抖函数
-        let timer:any = null;
-        const this_ = this
-        return function () {
-            let args = arguments;
-
-            timer && clearTimeout(timer);
-
-            timer = setTimeout(() => {
-                fn.apply(this_, args)
-            }, wait);
-        }
-    }
-
     public render() {
         const { className, iconType, disabled, errorText, style, ...inputProps } = this.props
         if (

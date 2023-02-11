@@ -2,7 +2,7 @@ interface BaseIconProps {
     src: string
     width?: number
     height?: number
-    classname?: string
+    className?: string
 }
 
 export type { BaseIconProps }
