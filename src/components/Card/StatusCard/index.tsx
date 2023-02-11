@@ -6,7 +6,7 @@ import ThumbsUp from '../../../assets/svg/commonIcon/thumbs_up.svg'
 import Comment from '../../../assets/svg/commonIcon/comment.svg'
 import { type StatusCardrops } from '../interface'
 import DefaultAvatar from '../../../assets/images/avatar.png'
-import RightClick from '../../RightClick/BaseUse/index'
+import RightClick from '../RightClick/index'
 
 const StatusCard: React.FC<StatusCardrops> = (props) => {
     const {
