@@ -1,6 +1,7 @@
 import React from 'react'
 import { type ComponentStory, type ComponentMeta } from '@storybook/react'
 import BaseButton from './index'
+import { ButtonType } from '../interface'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -19,5 +20,6 @@ HelloWorld.args = {
 
 export const ClickMe = Template.bind({})
 ClickMe.args = {
-    label: 'Click me!'
+    label: 'Click me!',
+    type: ButtonType.anim
 }

@@ -1,10 +1,22 @@
-interface selectionItem {
+interface FileCardProps {
+    type?: boolean
     name: string
-    click: () => void
-}
-interface CardProps {
-    className?: string
-    selectionList: selectionItem[] // 右键菜单选项列表 其中包括选项名称以及绑定的方法
 }
 
-export type { CardProps }
+interface StatusCardrops {
+    id?: number
+    avatar?: string
+    username?: string
+    time?: string
+    onKeyPress?: () => void
+    onClick?: () => void
+    content: string
+    commentcount?: number
+    liked?: boolean
+    likecount?: number
+    chooseLike?: () => void
+    clickToDetail?: () => void
+    clickToComment?: () => void
+}
+
+export type { FileCardProps, StatusCardrops }

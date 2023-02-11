@@ -1,13 +1,13 @@
 import React from 'react'
 import { type ComponentStory, type ComponentMeta } from '@storybook/react'
-import BaseCard from './index'
+import RightClick from './index'
 
 export default {
-    title: 'Muxi-ui/Card/BaseCard',
-    component: BaseCard
-} as ComponentMeta<typeof BaseCard>
+    title: 'Muxi-ui/RightClick/BaseUse',
+    component: RightClick
+} as ComponentMeta<typeof RightClick>
 
-const Template: ComponentStory<typeof BaseCard> = (args) => <BaseCard {...args} />
+const Template: ComponentStory<typeof RightClick> = (args) => <RightClick {...args} />
 
 export const RightCard = Template.bind({})
 RightCard.args = {

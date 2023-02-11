@@ -1,11 +1,13 @@
 import React from 'react'
-import logo from '../../../assets/images/6771060.jpg'
+import './index.less'
+import { type BaseIconProps } from '../interface'
 
-const BaseIcon: React.FC<any> = () => {
+const BaseIcon: React.FC<BaseIconProps> = (props) => {
+    const { src, width, height, className } = props
     return (
-        <div>
-            <img src={logo} alt={'123'} />
-        </div>
+        <>
+            <img src={src} className={className} width={width} height={height} />
+        </>
     )
 }
 

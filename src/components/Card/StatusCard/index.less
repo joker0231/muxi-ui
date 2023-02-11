@@ -1,0 +1,82 @@
+.status-item {
+  width: auto;
+  height: max-content;
+  padding: 28px 30px 21px;
+  background-color: #fbfbfb;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px 0 lightgray;
+
+  .information {
+    display: flex;
+    align-items: center;
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      margin-left: 11px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .name {
+        max-width: 600px;
+        font-size: 16px;
+      }
+
+      .date {
+        max-width: 600px;
+        margin-top: 4px;
+        font-size: 12px;
+        color: #919191;
+      }
+    }
+
+    .link {
+      margin-top: -25px;
+      margin-left: auto;
+      font-size: 16px;
+      color: #108ee9;
+    }
+  }
+
+  .content {
+    box-sizing: content-box;
+    padding: 20px 32px 40px 70px;
+    font-size: 16px;
+    cursor: pointer;
+
+    .height-constraint {
+      min-height: 90px;
+      max-height: 139px;
+      overflow: hidden;
+    }
+  }
+
+  .interaction {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .feedback-comment {
+      margin-left: 30px;
+    }
+  }
+}
+
+.feedback {
+  display: flex;
+  height: 21px;
+  margin-left: 20px;
+  line-height: 21px;
+  text-align: center;
+
+  .number {
+    margin-left: 6px;
+    font-size: 14px;
+  }
+}

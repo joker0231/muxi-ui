@@ -4,46 +4,78 @@
   user-select: none;
   border-radius: 4px;
   outline: none;
-}
 
-.btn-primary {
-  width: 96px;
-  height: 40px;
-  font-weight: bold;
-  color: #fff;
-  background-color: rgb(10 99 217);
-  border: none;
-}
+  .btn-primary {
+    width: 96px;
+    height: 40px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgb(10 99 217);
+    border: none;
+  }
 
-.btn-anim {
-  position: relative;
-  width: 96px;
-  height: 40px;
-  font-weight: bold;
-  color: #fff;
-  background-color: rgb(67 144 245);
-  border: none;
-  box-shadow: 0 8px 0 rgb(50 109 186);
-}
+  .btn-anim {
+    position: relative;
+    width: 96px;
+    height: 40px;
+    font-weight: bold;
+    color: #fff;
+    background-color: rgb(67 144 245);
+    border: none;
+    box-shadow: 0 8px 0 rgb(50 109 186);
 
-.btn-anim:hover {
-  background-color: rgb(62 184 250);
-  transition: background-color 0.3s;
-}
+    &:hover {
+      background-color: rgb(62 184 250);
+      transition: background-color 0.3s;
+    }
 
-.btn-anim:active {
-  top: 4px;
-  background: rgb(67 144 245);
-  box-shadow: 0 4px 0 rgb(50 109 186);
-}
+    &:active {
+      top: 4px;
+      background: rgb(67 144 245);
+      box-shadow: 0 4px 0 rgb(50 109 186);
+    }
+  }
 
-.btn-basic {
-  width: 96px;
-  height: 40px;
-  padding: 5px 20px;
-  line-height: 1.6;
-  color: #404040;
-  background-color: grey;
+  .btn-basic {
+    width: 96px;
+    height: 40px;
+    padding: 5px 20px;
+    line-height: 1.6;
+    color: #404040;
+    background-color: grey;
+  }
+
+  .btn-trigger {
+    display: inline-block;
+    height: 31px;
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 31px;
+    color: #919191;
+    white-space: nowrap;
+    background-color: #d7f0ff;
+    border: 0;
+    border-radius: 32px;
+  }
+
+  .btn-triggered {
+    height: 31px;
+    padding: 0 10px;
+    line-height: 31px;
+    color: #fbfbfb;
+    white-space: nowrap;
+    background-color: #1d4cb5;
+    border: 0;
+    border-radius: 32px;
+  }
+
+  .btn-disable {
+    color: rgb(0 0 0 / 25%);
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+  }
 }
 
 .trigger-base {
@@ -52,36 +84,4 @@
   line-height: 31px;
   white-space: nowrap;
   border-radius: 32px;
-}
-
-.btn-trigger {
-  display: inline-block;
-  height: 31px;
-  padding: 0 10px;
-  font-size: 16px;
-  line-height: 31px;
-  color: #919191;
-  white-space: nowrap;
-  background-color: #d7f0ff;
-  border: 0;
-  border-radius: 32px;
-}
-
-.btn-triggered {
-  height: 31px;
-  padding: 0 10px;
-  line-height: 31px;
-  color: #fbfbfb;
-  white-space: nowrap;
-  background-color: #1d4cb5;
-  border: 0;
-  border-radius: 32px;
-}
-
-.btn-disable {
-  color: rgb(0 0 0 / 25%);
-  cursor: not-allowed;
-  background-color: #f5f5f5;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
 }

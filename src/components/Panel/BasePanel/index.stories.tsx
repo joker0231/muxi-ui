@@ -15,5 +15,6 @@ BaseUsage.args = {
     okText: '确定',
     cancelText: '取消',
     title: '提示',
-    children: <span>请问是否关闭本窗口</span>
+    children: <span>请问是否关闭本窗口</span>,
+    closable: true
 }
