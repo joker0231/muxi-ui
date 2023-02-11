@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import './index.less'
-import RightClick from '../RightClick'
+import RightClick from '../../RightClick'
 import { getFileCardIcon, getNameIcon, type IconMapType } from './helper'
 
 interface FileCardProps {

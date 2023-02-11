@@ -1,17 +1,17 @@
 import './index.less'
 import React, { useCallback } from 'react'
-import useRightClick from '../../../helpers/hooks/useRightClick'
+import useRightClick from '../../helpers/hooks/useRightClick'
 
-interface OptionItem {
+export interface OptionItem {
     name: string
     clickHandler: () => void
 }
-interface CardProps {
+export interface RightClickProps {
     className?: string
     options: OptionItem[]
 }
 
-const RightClick: React.FC<CardProps> = (props) => {
+const RightClick: React.FC<RightClickProps> = (props) => {
     const { options } = props
     const { x, y, visible } = useRightClick()
 
