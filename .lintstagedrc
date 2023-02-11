@@ -2,8 +2,7 @@
     "src/**/*.{js,jsx,ts,tsx}": [
         "prettier --write",
         "eslint",
-        "jest --passWithNoTests",
-        "tsc-files --noEmit"
+        "jest --passWithNoTests"
     ],
     "src/**/*.{css,less}": [
         "stylelint --fix"

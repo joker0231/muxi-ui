@@ -1,21 +1,21 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react'
 
 const useSyncCallback = (callback: () => any) => {
-    const [proxyState, setProxyState] = useState({ current: false });
+    const [proxyState, setProxyState] = useState({ current: false })
 
     const Func = useCallback(() => {
-        setProxyState({ current: true });
+        setProxyState({ current: true })
     }, [proxyState])
 
     useEffect(() => {
-        if (proxyState.current === true) setProxyState({ current: false });
+        if (proxyState.current) setProxyState({ current: false })
     }, [proxyState])
 
     useEffect(() => {
-        proxyState.current && callback();
+        proxyState.current && callback()
     })
 
     return Func
 }
 
-export default useSyncCallback;
+export default useSyncCallback
