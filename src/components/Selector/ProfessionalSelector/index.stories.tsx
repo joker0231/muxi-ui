@@ -13,34 +13,86 @@ const Template: ComponentStory<typeof ProfessionalSelector> = (args) => (
 
 export const BaseUsage = Template.bind({})
 BaseUsage.args = {
+    onChange: (value) => {
+        alert(value)
+    },
     collegeList: [
         {
             name: '信息管理学院',
-            major: ['大数据', '电子商务']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '11'
+                }
+            ]
         },
         {
             name: '信息管理学院',
-            major: ['1', '电子商务']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '1'
+                }
+            ]
         },
         {
             name: '信息管理学院',
-            major: ['大数据', '2']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '电子商务'
+                }
+            ]
         },
         {
             name: '信息管理学院',
-            major: ['3', '电子商务']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '11'
+                }
+            ]
         },
         {
             name: '信息管理学院',
-            major: ['3', '电子商务']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '11'
+                }
+            ]
         },
         {
             name: '信息管理学院',
-            major: ['3', '电子商务']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '11'
+                }
+            ]
         },
         {
             name: '信息管理学院',
-            major: ['3', '电子商务']
+            major: [
+                {
+                    name: '大数据'
+                },
+                {
+                    name: '11'
+                }
+            ]
         }
     ]
 }

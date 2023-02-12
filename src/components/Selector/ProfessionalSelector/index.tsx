@@ -2,38 +2,54 @@ import React, { useRef, useState, useEffect } from 'react'
 import './index.less'
 import SelectorPanel, { type PanelHandle } from '../SelectorPanel/index'
 import SelectorInput from '../SelectorInput/index'
-import { type ProfessionalSelectorProps } from '../interface'
+
+export interface majorItem {
+    name: string
+}
+export interface collageItem {
+    name: string
+    major: majorItem[]
+}
+export interface ProfessionalSelectorProps {
+    className?: string
+    collegeList: collageItem[]
+    onChange: (profession: string) => void
+}
 
 const ProfessionalSelector: React.FC<ProfessionalSelectorProps> = (props) => {
-    const { collegeList } = props
+    const { collegeList, onChange } = props
     const input = useRef<HTMLDivElement>(null)
     const panel = useRef<PanelHandle>(null)
-    const [closable, setClosable] = useState<boolean>(false)
+    const [collage, setCollage] = useState<string>('')
+    const [major, setMajor] = useState<string>('')
+
+    const onChangeCollage = (collage: string) => {
+        setCollage(collage)
+    }
+    const onChangeMajor = (major: string) => {
+        setMajor(major)
+    }
+
+    useEffect(() => {
+        if (input.current && major && collage) {
+            onChange(input.current.innerHTML)
+        }
+    }, [major, collage])
 
     useEffect(() => {
         document.addEventListener('click', (e) => {
             if (panel.current) {
-                // panel.current.style.display = 'none'
                 panel.current.close()
             }
         })
     }, [])
 
-    const getInfo = (value: string) => {
-        if (input.current) {
-            input.current.innerHTML = value
-        }
-        setClosable(true)
-    }
-
-    const clear = () => {
-        if (input.current) {
-            input.current.innerHTML = ''
-        }
+    const onClear = () => {
+        setMajor('')
+        setCollage('')
         if (panel.current) {
             panel.current.close()
         }
-        setClosable(false)
     }
 
     const stopPropagation = (e: any) => {
@@ -49,8 +65,20 @@ const ProfessionalSelector: React.FC<ProfessionalSelectorProps> = (props) => {
     return (
         <>
             <div className="professional-container" onClick={stopPropagation}>
-                <SelectorInput closable={closable} ref={input} clear={clear} show={show} />
-                <SelectorPanel collegeList={collegeList} ref={panel} getInfo={getInfo} />
+                <SelectorInput
+                    major={major}
+                    collage={collage}
+                    ref={input}
+                    clear={onClear}
+                    show={show}
+                />
+                <SelectorPanel
+                    onChangeCollage={onChangeCollage}
+                    onChangeMajor={onChangeMajor}
+                    collage={collage}
+                    collegeList={collegeList}
+                    ref={panel}
+                />
             </div>
         </>
     )

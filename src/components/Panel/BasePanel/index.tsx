@@ -27,13 +27,8 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
         children
     } = props
     const classes = classNames('modal-body', className)
-    const closeBtn = closable ? (
-        <button type="button" className="modal-close" onClick={onClose}>
-            close
-        </button>
-    ) : null
 
-    const renderfooter = React.useCallback(() => {
+    const renderFooter = React.useCallback(() => {
         if (footer === undefined) {
             return (
                 <DefaultFooter
@@ -47,19 +42,25 @@ const BasePanel: React.FC<BasePanelProps> = (props) => {
         return footer
     }, [footer])
 
-    const content = visible ? (
-        <div className="modal">
-            <div className="modal-backdrop" />
-            <div className={classes}>
-                <div className="modal-title">{title}</div>
-                {closeBtn}
-                <div className="modal-content">{children}</div>
-                {renderfooter()}
-            </div>
-        </div>
-    ) : null
-
-    return <>{content}</>
+    return (
+        <>
+            {visible && (
+                <div className="modal">
+                    <div className="modal-backdrop" />
+                    <div className={classes}>
+                        <div className="modal-title">{title}</div>
+                        {closable && (
+                            <button type="button" className="modal-close" onClick={onClose}>
+                                close
+                            </button>
+                        )}
+                        <div className="modal-content">{children}</div>
+                        {renderFooter()}
+                    </div>
+                </div>
+            )}
+        </>
+    )
 }
 
 export default React.memo(BasePanel)

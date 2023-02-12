@@ -3,30 +3,36 @@ import './index.less'
 
 interface SelectorInputProps {
     value?: string
-    closable?: boolean
     clear: () => void
     show: () => void
+    major: string
+    collage: string
 }
 
 const SelectorInput = React.forwardRef<HTMLDivElement, SelectorInputProps>((props, ref) => {
-    const { closable, clear, show } = props
-    const closeBtn = closable ? (
-        <button
-            type="button"
-            className="modal-close"
-            onClick={(e) => {
-                e.stopPropagation()
-                clear()
-            }}
-        >
-            close
-        </button>
-    ) : null
+    const { clear, show, major, collage } = props
+
+    const closable = major !== '' || collage !== ''
+    const text = collage + (closable ? '/' : '') + major
+
     return (
         <>
             <div className="input-container" onClick={show}>
-                <div className="selector-input" ref={ref} />
-                {closeBtn}
+                <div className="selector-input" ref={ref}>
+                    {text}
+                </div>
+                {closable && (
+                    <button
+                        type="button"
+                        className="modal-close"
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            clear()
+                        }}
+                    >
+                        close
+                    </button>
+                )}
             </div>
         </>
     )

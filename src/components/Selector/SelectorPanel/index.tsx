@@ -1,15 +1,20 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import './index.less'
-import useSyncCallback from '../../../helpers/hooks/useSyncCallback'
 
-interface selectionItem {
+interface majorItem {
     name: string
-    major: string[]
+}
+
+interface collageItem {
+    name: string
+    major: majorItem[]
 }
 
 interface SelectorPanelProps {
-    collegeList: selectionItem[]
-    getInfo: (value: string) => void
+    collegeList: collageItem[]
+    collage: string
+    onChangeCollage: (collage: string) => void
+    onChangeMajor: (major: string) => void
 }
 
 export interface PanelHandle {
@@ -17,14 +22,10 @@ export interface PanelHandle {
     open: () => void
 }
 
-// forwardRef + divRef
-// forwardRef + useImperativeHandle  (类组件是privatie)
-
 const SelectorPanel = forwardRef<PanelHandle, SelectorPanelProps>((props, ref) => {
-    const { collegeList, getInfo } = props
+    const { collegeList, collage, onChangeCollage, onChangeMajor } = props
     const [index, setIndex] = useState<number>(0)
-    const [collage, setCollage] = useState<string>('')
-    const [major, setMajor] = useState<string>('')
+
     const [visible, setVisible] = useState<boolean>(false)
 
     useImperativeHandle(ref, () => {
@@ -43,51 +44,34 @@ const SelectorPanel = forwardRef<PanelHandle, SelectorPanelProps>((props, ref) =
     const getCollage: React.MouseEventHandler<HTMLLIElement> = (e) => {
         setIndex(e.currentTarget.tabIndex)
         if (!collage) {
-            setCollage(e.currentTarget.innerText)
-            getValue()
+            onChangeCollage(e.currentTarget.innerText)
         } else {
-            setCollage(e.currentTarget.innerText)
-            setMajor('')
-            getValue()
+            onChangeCollage(e.currentTarget.innerText)
+            onChangeMajor('')
         }
     }
 
     const getMajor: React.MouseEventHandler<HTMLLIElement> = (e) => {
-        setMajor(e.currentTarget.innerHTML)
-        getValue()
+        onChangeMajor(e.currentTarget.innerHTML)
     }
 
-    const getValue = useSyncCallback(() => {
-        const value = collage + '/' + major
-        getInfo(value)
-    })
+    const renderItem = (list: any[], onClick: React.MouseEventHandler<HTMLLIElement>) => {
+        return list.map((item, index) => {
+            return (
+                <li aria-hidden="true" key={index} onClick={onClick}>
+                    {item.name}
+                </li>
+            )
+        })
+    }
 
     return (
         <>
             {visible && (
                 <div className="selector-box">
+                    <ul className="selector-menu">{renderItem(collegeList, getCollage)}</ul>
                     <ul className="selector-menu">
-                        {collegeList.map((item) => {
-                            return (
-                                <li
-                                    aria-hidden="true"
-                                    key={collegeList.indexOf(item)}
-                                    onClick={getCollage}
-                                    tabIndex={collegeList.indexOf(item)}
-                                >
-                                    {item.name}
-                                </li>
-                            )
-                        })}
-                    </ul>
-                    <ul className="selector-menu">
-                        {collegeList[index].major.map((item, index) => {
-                            return (
-                                <li aria-hidden="true" onClick={getMajor} key={index}>
-                                    {item}
-                                </li>
-                            )
-                        })}
+                        {renderItem(collegeList[index] as any, getMajor)}
                     </ul>
                 </div>
             )}
