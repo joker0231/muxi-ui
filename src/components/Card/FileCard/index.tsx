@@ -1,71 +1,59 @@
-import React from 'react'
-import FolderIcon from '../../../assets/svg/fileIcon/folder.svg'
-import PdfIcon from '../../../assets/svg/fileIcon/pdf.svg'
-import PsdIcon from '../../../assets/svg/fileIcon/psd.svg'
-import TxtIcon from '../../../assets/svg/fileIcon/txt.svg'
-import ZipIcon from '../../../assets/svg/fileIcon/zip.svg'
-import RarIcon from '../../../assets/svg/fileIcon/rar.svg'
-import DefaultIcon from '../../../assets/svg/fileIcon/default.svg'
+import React, { useMemo } from 'react'
 import './index.less'
-import { type FileCardProps } from '../interface'
-import RightClick from '../../RightClick/BaseUse/index'
+import RightClick from '../../RightClick'
+import { getFileCardIcon, getNameIcon, type IconMapType } from './helper'
 
-const IconMap = {
-    folder: FolderIcon,
-    pdf: PdfIcon,
-    PDF: PdfIcon,
-    psd: PsdIcon,
-    zip: ZipIcon,
-    rar: RarIcon,
-    PSD: PsdIcon,
-    txt: TxtIcon,
-    TXT: TxtIcon,
-    ZIP: ZipIcon,
-    RAR: RarIcon,
-    default: DefaultIcon
+interface FileCardProps {
+    type?: boolean
+    name: string
 }
-
-declare type iconmaptype = keyof typeof IconMap
 
 const FileItem: React.FC<FileCardProps> = (props) => {
     const { type, name } = props
 
-    const icon = React.useMemo(() => {
-        return name.substring(name.length - 3, name.length)
-    }, [name])
+    const icon = useMemo(() => {
+        return getNameIcon(name)
+    }, [name]) as IconMapType // 感觉和这个断言有问题，name是字符串，传任意字符串瞎写，不一定能截取到要用的icon，ts就是要约束大家的规范，让大家不看你的组件代码怎么写的就知道怎么用，name感觉可以优化
+
+    const FolderIcon = useMemo(() => {
+        return getFileCardIcon('folder')
+    }, [])
+    const DefaultIcon = useMemo(() => {
+        return getFileCardIcon('default')
+    }, [])
 
     return (
         <>
-            <div className="fileicon">
+            <div className="file-card">
                 {type ? (
                     <>
                         <img src={FolderIcon} alt="" />
-                        <div className="file-titletext">{name}</div>
+                        <div className="file-card-title">{name}</div>
                     </>
                 ) : (
                     <>
-                        <img src={IconMap[icon as iconmaptype] || DefaultIcon} alt="" />
-                        <div className="file-titletext">{name}</div>
+                        <img src={getFileCardIcon(icon) || DefaultIcon} alt="" />
+                        <div className="file-card-title">{name}</div>
                     </>
                 )}
             </div>
             <RightClick
-                selectionList={[
+                options={[
                     {
                         name: '关注',
-                        click: () => {
+                        clickHandler: () => {
                             console.log(1)
                         }
                     },
                     {
                         name: '删除',
-                        click: () => {
+                        clickHandler: () => {
                             console.log(3)
                         }
                     },
                     {
                         name: '移动',
-                        click: () => {
+                        clickHandler: () => {
                             console.log(3)
                         }
                     }

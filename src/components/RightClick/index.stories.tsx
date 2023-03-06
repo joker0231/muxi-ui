@@ -3,30 +3,30 @@ import { type ComponentStory, type ComponentMeta } from '@storybook/react'
 import RightClick from './index'
 
 export default {
-    title: 'Muxi-ui/RightClick/BaseUse',
+    title: 'Muxi-ui/RightClick',
     component: RightClick
 } as ComponentMeta<typeof RightClick>
 
 const Template: ComponentStory<typeof RightClick> = (args) => <RightClick {...args} />
 
-export const RightCard = Template.bind({})
-RightCard.args = {
-    selectionList: [
+export const BaseUsage = Template.bind({})
+BaseUsage.args = {
+    options: [
         {
             name: '关注',
-            click: () => {
+            clickHandler: () => {
                 console.log(1)
             }
         },
         {
             name: '点赞',
-            click: () => {
+            clickHandler: () => {
                 console.log(2)
             }
         },
         {
             name: '删除',
-            click: () => {
+            clickHandler: () => {
                 console.log(3)
             }
         }

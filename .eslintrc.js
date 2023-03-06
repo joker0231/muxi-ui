@@ -21,7 +21,12 @@ module.exports = {
     },
     plugins: ['react', 'import', '@typescript-eslint', 'prettier', 'jsx-a11y'],
     rules: {
-        'prettier/prettier': 'error',
+        'prettier/prettier': [
+            'error',
+            {
+                endOfLine: 'auto'
+            }
+        ],
         'jsx-a11y/label-has-associated-control': [
             2,
             {
@@ -40,5 +45,5 @@ module.exports = {
         react: {
             version: 'detact'
         }
-    }
+    },
 }
