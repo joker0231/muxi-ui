@@ -44,9 +44,9 @@ const SelectorPanel = forwardRef<PanelHandle, SelectorPanelProps>((props, ref) =
     const getCollage: React.MouseEventHandler<HTMLLIElement> = (e) => {
         setIndex(e.currentTarget.tabIndex)
         if (!collage) {
-            onChangeCollage(e.currentTarget.innerText)
+            onChangeCollage(e.currentTarget.innerHTML)
         } else {
-            onChangeCollage(e.currentTarget.innerText)
+            onChangeCollage(e.currentTarget.innerHTML)
             onChangeMajor('')
         }
     }
@@ -58,7 +58,7 @@ const SelectorPanel = forwardRef<PanelHandle, SelectorPanelProps>((props, ref) =
     const renderItem = (list: any[], onClick: React.MouseEventHandler<HTMLLIElement>) => {
         return list.map((item, index) => {
             return (
-                <li aria-hidden="true" key={index} onClick={onClick}>
+                <li aria-hidden="true" key={index} onClick={onClick} tabIndex={index}>
                     {item.name}
                 </li>
             )
@@ -71,7 +71,7 @@ const SelectorPanel = forwardRef<PanelHandle, SelectorPanelProps>((props, ref) =
                 <div className="selector-box">
                     <ul className="selector-menu">{renderItem(collegeList, getCollage)}</ul>
                     <ul className="selector-menu">
-                        {renderItem(collegeList[index] as any, getMajor)}
+                        {renderItem(collegeList[index].major as any, getMajor)}
                     </ul>
                 </div>
             )}
