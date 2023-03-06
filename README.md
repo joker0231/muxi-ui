@@ -2,6 +2,9 @@
 
 > 打造木犀前端高质量、可扩展的公共 UI 库
  
+## 在线预览组件库地址：
+https://640575e99453b75307296e80-xbaloufudl.chromatic.com
+ 
 ## src目录结构
 ```text
 ├─assets       // 少部分静态资源，需要rollup构建支持
@@ -67,9 +70,3 @@ npm publish
 -   严格按照文档需求，先写需求再开发
 -   代码审核
 -   rollup 构建规范：less、静态资源
-
-## 开发文档
-
-借助金山文档在线文档组，利用**画图能力**和**协作能力**实现组件原型设计文档。
-
-组件开发规范：https://kdocs.cn/l/chHqqGN0rQSR
