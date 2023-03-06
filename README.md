@@ -2,6 +2,8 @@
 
 > 打造木犀前端高质量、可扩展的公共 UI 库
  
+# 在线预览组件库地址：https://www.chromatic.com/setup?appId=640575e99453b75307296e80
+ 
 ## src目录结构
 ```text
 ├─assets       // 少部分静态资源，需要rollup构建支持
